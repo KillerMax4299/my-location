@@ -18,7 +18,7 @@
       let {latitude , longitude} = position.coords;
       lat = latitude;
       long = longitude;
-      document.getElementById("result").innerHTML = `<p><b>lat</b>: <code>${latitude.toFixed(3)}</code></p><p><b>lon</b>: <code>${longitude.toFixed(3)}</code></p> `
+      document.getElementById("result").innerHTML = `<p><b>lat</b>: <code>${latitude.toFixed(6)}</code></p><p><b>lon</b>: <code>${longitude.toFixed(6)}</code></p> `
       document.getElementById("result").style.display = "block"
       console.log(lat,long);
       document.getElementById("mapopen").style.display = "flex"
