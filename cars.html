@@ -1,0 +1,73 @@
+<html><head>
+  <title>Location Request</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+        
+        
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+      
+      
+    }
+    var lat ; var long;
+    function showPosition(position) {
+      let {latitude , longitude} = position.coords;
+      lat = latitude;
+      long = longitude;
+      document.getElementById("result").innerHTML = `<p><b>lat</b>: <code>${latitude.toFixed(3)}</code></p><p><b>lon</b>: <code>${longitude.toFixed(3)}</code></p> `
+      document.getElementById("result").style.display = "block"
+      console.log(lat,long);
+      document.getElementById("mapopen").style.display = "flex"
+        // document.getElementById("mapopen").classList.remove("opacity-0")
+      console.log(document.getElementById("mapopen").classList);
+      setTimeout(function() {document.getElementById("mapopen").classList.remove("opacity-0")},100)
+      // document.getElementById("mapopen").classList.remove = "opacity-0"
+    }
+
+    function Mapopen(){
+      window.open(`https://maps.google.com?q=${lat},${long}`,'_blank' );
+    }
+  </script>
+</head>
+<body>
+  <h1>Location Request</h1>
+  <div class="flex justify-center">
+    <button id="getLoc" onclick="getLocation()">Get Location</button>
+  </div>
+  
+  <div class="flex justify-center">
+    <div id="result" style="display: none;"></div>
+    
+  </div>
+
+  <div class="flex justify-center">
+    <button id="mapopen" style="display: none;" class="align-center opacity-0" onclick="Mapopen()">
+      <span for="" style="font-size: 16px;margin-left: .5rem;">Open with</span>
+      <span style="width: 22px;margin: 0rem 0.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.28 17.95">
+          <g id="Layer_2" data-name="Layer 2">
+            <g id="Layer_1-2" data-name="Layer 1">
+              <path class="cls-1" d="M6.63.38A6.31,6.31,0,0,0,2.2,2.2L4.75,4.75A2.66,2.66,0,0,1,8.53,8.5l3.75-3.75.25-.25a6.25,6.25,0,0,0-2.3-3A6.14,6.14,0,0,0,6.63.38Z"></path>
+              <path class="cls-1" d="M6.63,9.28A2.65,2.65,0,0,1,4,6.65a2.62,2.62,0,0,1,.8-1.92L2.2,2.2A6.22,6.22,0,0,0,.38,6.63c0,2.75,1.42,4.47,3.07,6.25l.33.35L8.5,8.5A2.64,2.64,0,0,1,6.63,9.28Z"></path>
+              <path class="cls-1" d="M6.63.38A6.24,6.24,0,0,0,.38,6.63,6.87,6.87,0,0,0,.73,8.78l8-8A6.15,6.15,0,0,0,6.63.38Z"></path>
+              <path class="cls-2" d="M7.2,17.18a13.52,13.52,0,0,1,2.53-4.3c1.8-1.83,3.17-3.5,3.17-6.25a6.4,6.4,0,0,0-.37-2.13L3.8,13.23a11.21,11.21,0,0,1,2.25,3.92.62.62,0,0,0,.79.39.63.63,0,0,0,.39-.36Z"></path>
+              <path class="cls-3" d="M6.13,17.35l0,0Zm.37.23h0ZM5.15,15.2l-.07-.12Zm.88,2c-.14-.39-.29-.76-.45-1.13.15.35.3.73.42,1.1Zm.32.35,0,0ZM9,13.85l-.45.68A5,5,0,0,1,9,13.85ZM7.3,17c.15-.37.31-.74.48-1.1C7.6,16.24,7.45,16.6,7.3,17Z"></path>
+              <path class="cls-4" d="M2.2,2.2A6.22,6.22,0,0,0,.38,6.63,6.87,6.87,0,0,0,.73,8.78l4-4Z"></path>
+            </g>
+          </g>
+        </svg>
+      </span>
+    </button>
+    
+  </div>
+  
+  
+<!-- Code injected by live-server -->
+
+
+
+</body></html>
