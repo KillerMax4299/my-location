@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Request</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    }
+    
+    function showPosition(position) {
+      let {latitude , longitude} = position.coords;
+      document.getElementById("result").innerHTML = `<p><b>lat</b>: <code>${latitude.toFixed(3)}</code></p><p><b>lon</b>: <code>${longitude.toFixed(3)}</code></p> `
+      document.getElementById("result").style.display = "block"
+      console.log(typeof latitude);
+    }
+  </script>
+</head>
+<body>
+  <h1>Location Request</h1>
+  <div class="flex justify-center">
+    <button onclick="getLocation()">Get Location</button>
+  </div>
+  
+  <div class="flex justify-center">
+    <div id="result" style="display: none;"></div>
+  </div>
+  
+</body>
+</html>
